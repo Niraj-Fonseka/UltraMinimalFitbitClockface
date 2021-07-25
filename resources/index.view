@@ -1,0 +1,6 @@
+<svg class="background">
+  <text id="myLabel" />
+  <text id="hr" />
+  <text id="steps" />
+  <text id="cal" />
+</svg>

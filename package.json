@@ -1,0 +1,26 @@
+{
+  "devDependencies": {
+    "@fitbit/sdk": "~6.0.0"
+  },
+  "fitbit": {
+    "appUUID": "72d836b9-86a5-4553-8b77-9bf93cd0a91f",
+    "appType": "clockface",
+    "appDisplayName": "MinimalStats",
+    "iconFile": "resources/icon.png",
+    "wipeColor": "",
+    "requestedPermissions": [
+      "access_heart_rate",
+      "access_activity"
+    ],
+    "buildTargets": [
+      "atlas",
+      "vulcan"
+    ],
+    "i18n": {
+      "en-US": {
+        "name": "MinimalStats"
+      }
+    },
+    "defaultLanguage": "en-US"
+  }
+}
