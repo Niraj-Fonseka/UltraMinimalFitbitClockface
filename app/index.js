@@ -5,6 +5,8 @@ import * as util from "../common/utils";
 import { HeartRateSensor } from "heart-rate";
 import { BodyPresenceSensor } from "body-presence";
 import { today } from 'user-activity';
+import { display } from "display";
+
 // Update the clock every minute
 clock.granularity = "minutes";
 
@@ -27,6 +29,7 @@ clock.ontick = (evt) => {
   }
   let mins = util.zeroPad(today.getMinutes());
   myLabel.text = `${hours}:${mins}`;
+
 }
 
 
@@ -34,6 +37,9 @@ if (HeartRateSensor) {
   const hrm = new HeartRateSensor({ frequency: 1 });
   hrm.addEventListener("reading", () => {
     heartRate.text = `${hrm.heartRate}`;
+    updateSteps();
+    updateCals();
+
   });
   hrm.start();
   
@@ -47,9 +53,14 @@ if (HeartRateSensor) {
     }
   });
   body.start();
-}
+  }
 }
 
+function updateSteps() {
+  steps.text = `${(today.adjusted.distance / 1609.344).toFixed(2) } mi`;
+}
 
-steps.text = `${(today.adjusted.distance / 1609.344).toFixed(2) } mi`
-cal.text = `${today.adjusted.calories} cal`
+function updateCals() {
+  let cals = (today.adjusted.calories);
+  cal.text = `${cals} cal`;
+}
